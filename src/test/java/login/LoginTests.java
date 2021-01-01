@@ -2,9 +2,11 @@ package login;
 
 import base.BaseTest;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 
-public class LoginTest extends BaseTest {
+public class LoginTests extends BaseTest {
 
     @Test
     public void testLoginInsertCorrectUsernameAndPassword(){
@@ -14,9 +16,18 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(DashBoardPage.getWelcomeText().contains("Welcome"),"Sign in failed.");
     }
 
+
     @Test
     public void testLoginInsertCorrectUsernameAndWrongPassword(){
         homePage.setUsername("Admin");
+        homePage.setPassword("admin456");
+        homePage.clickLoginButton();
+        Assert.assertEquals(homePage.getLoginErrorWarning(),"Invalid credentials", "Wrong login error warning.");
+    }
+
+    @Test
+    public void testLoginInsertWrongUsernameAndWrongPassword(){
+        homePage.setUsername("xxxxx");
         homePage.setPassword("admin456");
         homePage.clickLoginButton();
         Assert.assertEquals(homePage.getLoginErrorWarning(),"Invalid credentials", "Wrong login error warning.");
@@ -31,10 +42,20 @@ public class LoginTest extends BaseTest {
     }
 
     @Test
+    public void testLoginInsertPasswordOnly(){
+        homePage.setUsername("");
+        homePage.setPassword("aaaa");
+        homePage.clickLoginButton();
+        Assert.assertEquals(homePage.getLoginErrorWarning(),"Username cannot be empty", "Wrong login error warning.");
+    }
+
+    @Test
     public void testLoginWithoutInsertUsernameAndPassword(){
         homePage.setUsername("");
         homePage.setPassword("");
         homePage.clickLoginButton();
         Assert.assertEquals(homePage.getLoginErrorWarning(),"Username cannot be empty", "Wrong login error warning.");
     }
+
+
 }
