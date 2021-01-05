@@ -3,7 +3,3 @@
 /workspace.xml
 /target
 /.idea
-
-### Java ###
-# Compiled class file
-*.class
