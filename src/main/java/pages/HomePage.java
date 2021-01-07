@@ -11,6 +11,7 @@ public class HomePage {
     private By loginButton = By.id("btnLogin");
     private By loginErrorMessage = By.id("spanMessage");
     private By forgotPasswordLink = By.linkText("Forgot your password?");
+    private By loginPanelHeader = By.id("logInPanelHeading");
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -41,6 +42,12 @@ public class HomePage {
         driver.findElement(forgotPasswordLink).click();
         return new ForgotPasswordPage(driver);
     }
+
+    public String getLoginPanelHeading(){
+        return driver.findElement(loginPanelHeader).getText();
+    }
+
+
 
 
 }
