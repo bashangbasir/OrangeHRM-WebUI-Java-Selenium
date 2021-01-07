@@ -18,8 +18,9 @@ public class ForgotPasswordPage {
         driver.findElement(usernameTextBox).sendKeys(username);
     }
 
-    public void clickResetButton(){
+    public SuccessForgotPasswordPage clickResetButton(){
         driver.findElement(resetButton).click();
+        return new SuccessForgotPasswordPage(driver);
     }
 
     public HomePage clickCancelButton(){
