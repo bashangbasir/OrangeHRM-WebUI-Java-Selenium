@@ -2,11 +2,9 @@ package base;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import pages.HomePage;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class BaseTest {
 
@@ -14,11 +12,18 @@ public class BaseTest {
     protected HomePage homePage;
 
     @BeforeMethod
-    public void setUp(){
-        System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://opensource-demo.orangehrmlive.com/");
-
+    @Parameters({"URL","browser"})
+    public void setUp(String URL, String browser){
+        if (browser.equals("Chrome")){
+            System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
+            driver = new ChromeDriver();
+        }
+        else if (browser.equals("FireFox")){
+            System.setProperty("webdriver.gecko.driver", "resources/geckodriver.exe");
+            driver = new FirefoxDriver();
+        }
+        driver.manage().window().maximize();
+        driver.get(URL);
         homePage = new HomePage(driver);
     }
 
