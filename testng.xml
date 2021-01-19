@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Testing OrangeHRM Site">
+    <parameter name="URL" value="https://opensource-demo.orangehrmlive.com/"/>
+    <test name="LoginTestsCase">
+        <parameter name="browser" value="FireFox"/>
+        <classes >
+            <class name="login.LoginTests">
+                <methods>
+                    <include name="testLoginInsertCorrectUsernameAndPassword"/>
+                    <include name="testLoginInsertCorrectUsernameAndWrongPassword"/>
+                    <include name="testLoginInsertWrongUsernameAndWrongPassword"/>
+                    <include name="testLoginInsertUsernameOnly"/>
+                    <include name="testLoginInsertPasswordOnly"/>
+                    <include name="testLoginWithoutInsertUsernameAndPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->
