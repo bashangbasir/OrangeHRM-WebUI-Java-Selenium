@@ -3,9 +3,10 @@
 <suite name="Testing OrangeHRM Site">
     <parameter name="URL" value="https://opensource-demo.orangehrmlive.com/"/>
     <test name="LoginTestsCase">
-        <parameter name="browser" value="FireFox"/>
+        <parameter name="browser" value="Chrome"/>
         <classes >
-            <class name="login.LoginTests">
+            <!--LOGIN TEST-->
+            <!--<class name="login.LoginTests">
                 <methods>
                     <include name="testLoginInsertCorrectUsernameAndPassword"/>
                     <include name="testLoginInsertCorrectUsernameAndWrongPassword"/>
@@ -13,6 +14,14 @@
                     <include name="testLoginInsertUsernameOnly"/>
                     <include name="testLoginInsertPasswordOnly"/>
                     <include name="testLoginWithoutInsertUsernameAndPassword"/>
+                </methods>
+            </class>
+            -->
+            <!--FORGOT PASSWORD TEST-->
+            <class name="forgotpassword.ForgotPasswordTests">
+                <methods>
+                    <include name="testForgotPasswordWithCorrectUsername"/>
+                    <include name="testCancelForgotPassword"/>
                 </methods>
             </class>
         </classes>
