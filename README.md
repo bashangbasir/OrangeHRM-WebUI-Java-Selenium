@@ -14,7 +14,7 @@ Scenarios covered :
 - Login Without Insert Username And Password
 
 2. Forgot Password Test
- -Forgot Password With Correct Username
+ - Forgot Password With Correct Username
  - Cancel Forgot Password
  
 
