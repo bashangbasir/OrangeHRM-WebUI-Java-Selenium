@@ -14,11 +14,11 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"URL","browser"})
     public void setUp(String URL, String browser){
-        if (browser.equals("Chrome")){
+        if (browser.equalsIgnoreCase("chrome")){
             System.setProperty("webdriver.chrome.driver", "resources/chromedriver.exe");
             driver = new ChromeDriver();
         }
-        else if (browser.equals("FireFox")){
+        else if (browser.equalsIgnoreCase("firefox")){
             System.setProperty("webdriver.gecko.driver", "resources/geckodriver.exe");
             driver = new FirefoxDriver();
         }

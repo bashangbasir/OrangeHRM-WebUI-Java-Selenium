@@ -16,7 +16,7 @@ public class ForgotPasswordTests extends BaseTest {
     }
 
     @Test
-    public void testCancelForgotPasswordProcess(){
+    public void testCancelForgotPassword(){
         var forgotPasswordPage = homePage.clickForgotPasswordLink();
         forgotPasswordPage.clickCancelButton();
         Assert.assertEquals(homePage.getLoginPanelHeading(),"LOGIN Panel","Incorrect page");
