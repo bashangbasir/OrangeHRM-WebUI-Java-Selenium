@@ -6,7 +6,7 @@
         <parameter name="browser" value="Chrome"/>
         <classes >
             <!--LOGIN TEST-->
-            <!--<class name="login.LoginTests">
+            <class name="login.LoginTests">
                 <methods>
                     <include name="testLoginInsertCorrectUsernameAndPassword"/>
                     <include name="testLoginInsertCorrectUsernameAndWrongPassword"/>
@@ -16,11 +16,14 @@
                     <include name="testLoginWithoutInsertUsernameAndPassword"/>
                 </methods>
             </class>
-            -->
+
             <!--FORGOT PASSWORD TEST-->
             <class name="forgotpassword.ForgotPasswordTests">
                 <methods>
                     <include name="testForgotPasswordWithCorrectUsername"/>
+                    <include name="testForgotPasswordWithCorrectUsernameMultipleTry"/>
+                    <include name="testForgotPasswordWithWrongUsername"/>
+                    <include name="testForgotPasswordWithEmptyUsername"/>
                     <include name="testCancelForgotPassword"/>
                 </methods>
             </class>
