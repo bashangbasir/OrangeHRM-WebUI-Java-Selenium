@@ -15,6 +15,9 @@ Scenarios covered :
 
 2. Forgot Password Test
  - Forgot Password With Correct Username
+ - Forgot Password With Correct Username Multiple Try 
+ - Forgot Password With Wrong Username
+ - Forgot Password With Empty Username
  - Cancel Forgot Password
  
 
