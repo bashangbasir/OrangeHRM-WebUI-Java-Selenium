@@ -13,3 +13,11 @@ Scenarios covered :
 - Login Insert Password Only
 - Login Without Insert Username And Password
 
+2. Forgot Password Test
+ - Forgot Password With Correct Username
+ - Forgot Password With Correct Username Multiple Try 
+ - Forgot Password With Wrong Username
+ - Forgot Password With Empty Username
+ - Cancel Forgot Password
+ 
+
