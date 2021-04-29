@@ -2,18 +2,17 @@ package login;
 
 import base.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
+import utils.LoginMessages;
 
-public class LoginTests extends BaseTest {
+public class LoginTests extends BaseTest implements LoginMessages {
 
     @Test
     public void testLoginInsertCorrectUsernameAndPassword(){
         homePage.setUsername("Admin");
         homePage.setPassword("admin123");
         var DashBoardPage = homePage.clickLoginButton();
-        Assert.assertTrue(DashBoardPage.getWelcomeText().contains("Welcome"),"Sign in failed.");
+        Assert.assertTrue(DashBoardPage.getWelcomeText().contains(LoginMessages.WELCOMEMSG),"Sign in failed.");
     }
 
 
@@ -22,7 +21,7 @@ public class LoginTests extends BaseTest {
         homePage.setUsername("Admin");
         homePage.setPassword("admin456");
         homePage.clickLoginButton();
-        Assert.assertEquals(homePage.getLoginErrorWarning(),"Invalid credentials", "Wrong login error warning.");
+        Assert.assertEquals(homePage.getLoginErrorWarning(), LoginMessages.INVALIDCREDMSG, "Wrong login error warning.");
     }
 
     @Test
@@ -30,7 +29,7 @@ public class LoginTests extends BaseTest {
         homePage.setUsername("xxxxx");
         homePage.setPassword("admin456");
         homePage.clickLoginButton();
-        Assert.assertEquals(homePage.getLoginErrorWarning(),"Invalid credentials", "Wrong login error warning.");
+        Assert.assertEquals(homePage.getLoginErrorWarning(), LoginMessages.INVALIDCREDMSG, "Wrong login error warning.");
     }
 
     @Test
@@ -38,7 +37,7 @@ public class LoginTests extends BaseTest {
         homePage.setUsername("admin");
         homePage.setPassword("");
         homePage.clickLoginButton();
-        Assert.assertEquals(homePage.getLoginErrorWarning(),"Password cannot be empty", "Wrong login error warning.");
+        Assert.assertEquals(homePage.getLoginErrorWarning(), LoginMessages.EMPTYPASSWORDMSG, "Wrong login error warning.");
     }
 
     @Test
@@ -46,7 +45,7 @@ public class LoginTests extends BaseTest {
         homePage.setUsername("");
         homePage.setPassword("aaaa");
         homePage.clickLoginButton();
-        Assert.assertEquals(homePage.getLoginErrorWarning(),"Username cannot be empty", "Wrong login error warning.");
+        Assert.assertEquals(homePage.getLoginErrorWarning(), LoginMessages.EMPTYUSERNAMEMSG, "Wrong login error warning.");
     }
 
     @Test
@@ -54,7 +53,7 @@ public class LoginTests extends BaseTest {
         homePage.setUsername("");
         homePage.setPassword("");
         homePage.clickLoginButton();
-        Assert.assertEquals(homePage.getLoginErrorWarning(),"Username cannot be empty", "Wrong login error warning.");
+        Assert.assertEquals(homePage.getLoginErrorWarning(), LoginMessages.EMPTYUSERNAMEMSG, "Wrong login error warning.");
     }
 
 
