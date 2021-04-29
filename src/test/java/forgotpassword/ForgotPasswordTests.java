@@ -3,16 +3,17 @@ package forgotpassword;
 import base.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import utils.ForgotPasswordMessages;
 
-public class ForgotPasswordTests extends BaseTest {
+public class ForgotPasswordTests extends BaseTest implements ForgotPasswordMessages {
 
     @Test (priority = 0)
     public void testForgotPasswordWithCorrectUsername(){
         var forgotPasswordPage = homePage.clickForgotPasswordLink();
         forgotPasswordPage.setUsername("Admin");
         var successForgotPasswordPage = forgotPasswordPage.clickResetButton();
-        Assert.assertEquals(successForgotPasswordPage.getSuccessHeader(),"Instruction Sent !","Incorrect Success Header's content");
-        Assert.assertTrue(successForgotPasswordPage.getSuccessMessage().contains("Instructions for resetting your password have been sent to"),"Incorrect Success message's content ");
+        Assert.assertEquals(successForgotPasswordPage.getSuccessHeader(),ForgotPasswordMessages.INSTRUCTIONSENTSUCCESSMSG,"Incorrect Success Header's content");
+        Assert.assertTrue(successForgotPasswordPage.getSuccessMessage().contains(ForgotPasswordMessages.INSTRUCTIONSENTDETAILMSG),"Incorrect Success message's content ");
     }
 
     @Test
@@ -22,7 +23,7 @@ public class ForgotPasswordTests extends BaseTest {
         forgotPasswordPage.clickResetButton();
         var isWarningMessageDisplayed = forgotPasswordPage.isMessageWarningDisplayed();
         Assert.assertTrue(isWarningMessageDisplayed,"Warning Message is not displayed");
-        Assert.assertTrue(forgotPasswordPage.getWarningMessage().contains("There is a password reset request already in the system."),"Incorrect warning message's content");
+        Assert.assertTrue(forgotPasswordPage.getWarningMessage().contains(ForgotPasswordMessages.REQUESTINSYSTEMMSG),"Incorrect warning message's content");
     }
 
     @Test
@@ -32,7 +33,8 @@ public class ForgotPasswordTests extends BaseTest {
         forgotPasswordPage.clickResetButton();
         var isWarningMessageDisplayed = forgotPasswordPage.isMessageWarningDisplayed();
         Assert.assertTrue(isWarningMessageDisplayed,"Warning Message is not displayed");
-        Assert.assertTrue(forgotPasswordPage.getWarningMessage().contains("Please contact HR admin in order to reset the password"),"Incorrect warning message's content");
+        Assert.assertTrue(forgotPasswordPage.getWarningMessage().contains(ForgotPasswordMessages.CONTACTHRMSG),
+                "Incorrect warning message's content");
 
     }
 
@@ -43,7 +45,7 @@ public class ForgotPasswordTests extends BaseTest {
         forgotPasswordPage.clickResetButton();
         var isWarningMessageDisplayed = forgotPasswordPage.isMessageWarningDisplayed();
         Assert.assertTrue(isWarningMessageDisplayed,"Warning Message is not displayed");
-        Assert.assertTrue(forgotPasswordPage.getWarningMessage().contains("Could not find a user with given details"),"Incorrect warning message's content");
+        Assert.assertTrue(forgotPasswordPage.getWarningMessage().contains(ForgotPasswordMessages.MISSINGUSERNAMEMSG),"Incorrect warning message's content");
     }
 
     @Test
